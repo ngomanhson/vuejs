@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Mouse Event</title>
+        <title>Basic #2</title>
 
         <style>
             .card {
@@ -21,11 +21,11 @@
         <h1>Hello VueJS 3</h1>
 
         <section id="contact">
-            <div class="card-container">
-                <div class="card" @mouseover="onLogEvent">Mouse Over Event</div>
-                <div class="card" @mouseleave="onLogEvent">Mouse Leave Event</div>
-                <div class="card" @dblclick="onLogEvent($event, 150, 100)">Double Click</div>
-                <div class="card" @mousemove="onMouseMove">Mouse Move {{ `${x} - ${y}`}}</div>
+            <div class="card-products card-container">
+                <div class="card" v-for="product in products">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.price }}</p>
+                </div>
             </div>
         </section>
 
