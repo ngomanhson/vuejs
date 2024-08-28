@@ -36,12 +36,14 @@
 
         <section id="contact">
             <div class="card-products card-container" :class="classTesting">
-                <div class="card" v-for="product in products" :class="{ cart: product.isCart }" @dblclick="onToggleCart($event, product)">
+                <div class="card" v-for="product in productComputed" :class="{ cart: product.isCart }" @dblclick="onToggleCart($event, product)">
                     <img class="card-thumb" v-bind:src="product.thumbnail" alt="" />
                     <h3>{{ product.name }}</h3>
                     <p>${{ product.price }}</p>
                 </div>
             </div>
+
+            <!-- {{productComputed}} -->
         </section>
 
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

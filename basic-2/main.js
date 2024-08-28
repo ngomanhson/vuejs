@@ -6,19 +6,19 @@ const app = Vue.createApp({
                 {
                     thumbnail: "./assets/images/image-1.jpg",
                     name: "Product 1",
-                    price: 120.0,
+                    price: 100.0,
                     isCart: false,
                 },
                 {
                     thumbnail: "./assets/images/image-2.jpg",
                     name: "Product 2",
-                    price: 120.0,
+                    price: 150.0,
                     isCart: false,
                 },
                 {
                     thumbnail: "./assets/images/image-3.jpg",
                     name: "Product 3",
-                    price: 120.0,
+                    price: 200.0,
                     isCart: true,
                 },
             ],
@@ -26,8 +26,12 @@ const app = Vue.createApp({
     },
     methods: {
         onToggleCart(event, product) {
-            console.log(product);
             product.isCart = !product.isCart;
+        },
+    },
+    computed: {
+        productComputed() {
+            return this.products.filter((product) => product.price < 160);
         },
     },
 });
