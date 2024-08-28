@@ -12,8 +12,13 @@
                 justify-content: center;
                 width: 180px;
                 height: 180px;
-                background: #dedede;
                 margin-bottom: 30px;
+            }
+
+            .card > img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
             }
         </style>
     </head>
@@ -21,8 +26,9 @@
         <h1>Hello VueJS 3</h1>
 
         <section id="contact">
-            <div class="card-products card-container">
+            <div class="card-products card-container" :class="classTesting">
                 <div class="card" v-for="product in products">
+                    <img v-bind:src="product.thumbnail" alt="" />
                     <h3>{{ product.name }}</h3>
                     <p>{{ product.price }}</p>
                 </div>
