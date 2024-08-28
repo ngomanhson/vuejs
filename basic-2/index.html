@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mouse Event</title>
+
+        <style>
+            .card {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 180px;
+                height: 180px;
+                background: #dedede;
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello VueJS 3</h1>
+
+        <section id="contact">
+            <div class="card-container">
+                <div class="card" @mouseover="onLogEvent">Mouse Over Event</div>
+                <div class="card" @mouseleave="onLogEvent">Mouse Leave Event</div>
+                <div class="card" @dblclick="onLogEvent($event, 150, 100)">Double Click</div>
+                <div class="card" @mousemove="onMouseMove">Mouse Move {{ `${x} - ${y}`}}</div>
+            </div>
+        </section>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="./main.js"></script>
+    </body>
+</html>
