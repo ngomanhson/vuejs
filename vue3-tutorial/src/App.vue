@@ -1,41 +1,77 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld ref="hello" msg="Welcome to Your Vue.js App" />
-  <header-app ref="header" />
-  <h1>Hello NgoManhSon</h1>
-  <button @click="onChange">Change me</button>
+  <h1 class="fade">Hello VueJS</h1>
+  <teleport to="body">
+    <transition name="modal-fade">
+      <base-modal
+        v-if="isShowModal"
+        title="this is new title from app component"
+        content="this is content modal"
+        theme="example"
+        @toggle="onToggleModal"
+      >
+        <template v-slot:header>
+          <h2>This is header</h2>
+        </template>
+
+        <label>Name</label>
+        <input type="password" />
+
+        <template v-slot:footer>
+          <base-button
+            content="Cancel"
+            theme="secondary"
+            @toggle="onToggleModal"
+          />
+
+          <base-button content="Save changes" @toggle="onToggleModal" />
+        </template>
+      </base-modal>
+    </transition>
+  </teleport>
+
+  <base-button content="Toggle modal" @click="onToggleModal" />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import Header from "./components/Header.vue";
+import Modal from "./components/Modal.vue";
+import Button from "./components/Button.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
-    HeaderApp: Header,
+    BaseModal: Modal,
+    BaseButton: Button,
   },
-  // data() {},
+  data() {
+    return {
+      isShowModal: false,
+    };
+  },
   methods: {
-    onChange() {
-      console.log("Hello World");
-      console.log(this.$refs.hello);
-      this.$refs.hello.onConsoleTesting();
-      this.$refs.header;
-      console.log(this.$refs.header);
+    onToggleModal() {
+      console.log("running here");
+      this.isShowModal = !this.isShowModal;
+      console.log(this.isShowModal);
     },
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.modal-fade-enter-to,
+.modal-fade-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
